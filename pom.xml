@@ -12,6 +12,7 @@
 		<module>study-api</module>
 		<module>study-biz</module>
 		<module>study-web</module>
+		<module>study-demo</module>
 	</modules>
 	<properties>
 		<study.version>0.0.1</study.version>
