@@ -33,6 +33,20 @@
 			<version>2.6.2</version>
 		</dependency>
 
+		<!-- logger start -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.10</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		<!-- logger end -->
+
 		<!-- util start -->
 		<dependency>
 			<groupId>joda-time</groupId>

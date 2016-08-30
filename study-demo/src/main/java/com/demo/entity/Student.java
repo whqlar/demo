@@ -17,15 +17,14 @@ public class Student extends Person {
     }
 
     public static Student getDefaultStudent() {
-        Student student = (Student) Person.getDefaultPerson();
-        student.setSchool("SMU");
-        return student;
+        return new Student(Person.getDefaultPerson(), "SMU");
     }
 
 
 
-    public Student(Person person) {
+    public Student(Person person, String school) {
         BeanUtils.copyProperties(person, this);
+        this.setSchool(school);
     }
 
     public String getSchool() {
