@@ -15,6 +15,11 @@
     <dependencies>
 
         <dependency>
+            <groupId>com.dianping.study</groupId>
+            <artifactId>study-biz</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
         </dependency>
