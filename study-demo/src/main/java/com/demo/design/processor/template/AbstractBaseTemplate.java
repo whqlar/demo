@@ -1,9 +1,9 @@
-package com.demo.processor.template;
+package com.demo.design.processor.template;
 
-import com.demo.processor.enums.ResultEnum;
-import com.demo.processor.exception.BizException;
-import com.demo.processor.request.BaseReq;
-import com.demo.processor.response.BaseResp;
+import com.demo.design.processor.enums.ResultEnum;
+import com.demo.design.processor.exception.BizException;
+import com.demo.design.processor.request.BaseReq;
+import com.demo.design.processor.response.BaseResp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

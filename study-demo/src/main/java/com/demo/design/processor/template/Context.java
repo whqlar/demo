@@ -1,7 +1,7 @@
-package com.demo.processor.template;
+package com.demo.design.processor.template;
 
-import com.demo.processor.request.BaseReq;
-import com.demo.processor.response.BaseResp;
+import com.demo.design.processor.request.BaseReq;
+import com.demo.design.processor.response.BaseResp;
 
 import java.util.HashMap;
 import java.util.Map;

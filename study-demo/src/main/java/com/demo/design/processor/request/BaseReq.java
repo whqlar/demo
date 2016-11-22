@@ -1,6 +1,6 @@
-package com.demo.processor.request;
+package com.demo.design.processor.request;
 
-import com.demo.processor.enums.BizChannelEnum;
+import com.demo.design.processor.enums.BizChannelEnum;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 

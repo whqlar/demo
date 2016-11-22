@@ -1,6 +1,6 @@
-package com.demo.processor.exception;
+package com.demo.design.processor.exception;
 
-import com.demo.processor.enums.ResultEnum;
+import com.demo.design.processor.enums.ResultEnum;
 
 /**
  * 运行时异常类

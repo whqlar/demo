@@ -1,8 +1,8 @@
-package com.demo.processor.template;
+package com.demo.design.processor.template;
 
-import com.demo.processor.exception.BizException;
-import com.demo.processor.request.BaseReq;
-import com.demo.processor.response.BaseResp;
+import com.demo.design.processor.exception.BizException;
+import com.demo.design.processor.request.BaseReq;
+import com.demo.design.processor.response.BaseResp;
 
 /**
  * Created by wu

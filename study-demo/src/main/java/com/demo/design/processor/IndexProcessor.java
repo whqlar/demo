@@ -1,17 +1,18 @@
-package com.demo.processor;
+package com.demo.design.processor;
 
-import com.demo.processor.enums.BizChannelEnum;
-import com.demo.processor.enums.ResultEnum;
-import com.demo.processor.exception.BizException;
-import com.demo.processor.request.BaseReq;
-import com.demo.processor.response.BaseResp;
-import com.demo.processor.template.AbstractBaseTemplate;
-import com.demo.processor.template.Context;
+import com.demo.design.processor.enums.BizChannelEnum;
+import com.demo.design.processor.enums.ResultEnum;
+import com.demo.design.processor.exception.BizException;
+import com.demo.design.processor.request.BaseReq;
+import com.demo.design.processor.response.BaseResp;
+import com.demo.design.processor.template.AbstractBaseTemplate;
+import com.demo.design.processor.template.Context;
 
 /**
  * Created by wu on 16/10/10.
  */
 public class IndexProcessor extends AbstractBaseTemplate<BaseReq, BaseResp> {
+
     @Override
     public void preInvoke(Context<BaseReq, BaseResp> context) throws BizException {
 

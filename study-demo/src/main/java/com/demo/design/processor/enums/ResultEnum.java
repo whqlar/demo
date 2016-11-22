@@ -1,4 +1,4 @@
-package com.demo.processor.enums;
+package com.demo.design.processor.enums;
 
 /**
  * Created by wu on 16/10/10.

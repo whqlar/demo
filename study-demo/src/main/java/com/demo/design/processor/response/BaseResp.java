@@ -1,6 +1,6 @@
-package com.demo.processor.response;
+package com.demo.design.processor.response;
 
-import com.demo.processor.enums.ResultEnum;
+import com.demo.design.processor.enums.ResultEnum;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 

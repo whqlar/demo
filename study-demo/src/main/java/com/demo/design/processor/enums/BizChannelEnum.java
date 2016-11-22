@@ -1,4 +1,4 @@
-package com.demo.processor.enums;
+package com.demo.design.processor.enums;
 
 public enum BizChannelEnum {
 
