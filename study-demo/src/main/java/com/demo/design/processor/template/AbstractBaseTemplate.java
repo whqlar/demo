@@ -33,7 +33,7 @@ public abstract class AbstractBaseTemplate<S extends BaseReq, T extends BaseResp
 
         } catch (BizException e) {
             LOGGER.error("[execute error]", e);
-            context.getResponse().setResultEnum(e.getResultEnum());
+            context.getResponse().setResultEnum(ResultEnum.fromCode(e.getCode()));
         } catch (Exception e) {
             LOGGER.error("[execute error]", e);
             context.getResponse().setResultEnum(ResultEnum.INNER_ERROR);

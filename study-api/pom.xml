@@ -11,4 +11,12 @@
 	<artifactId>study-api</artifactId>
 	<packaging>jar</packaging>
 	<name>study-api</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.9</version>
+		</dependency>
+	</dependencies>
 </project>

@@ -21,7 +21,7 @@ public class IndexProcessor extends AbstractBaseTemplate<BaseReq, BaseResp> {
     @Override
     public void invoke(Context<BaseReq, BaseResp> context) throws BizException {
         context.getResponse().setResultEnum(ResultEnum.SUCCESS);
-        throw BizException.newInstance(ResultEnum.INNER_ERROR);
+        throw new BizException(ResultEnum.INNER_ERROR.getCode(), ResultEnum.INNER_ERROR.getMsg());
     }
 
     @Override

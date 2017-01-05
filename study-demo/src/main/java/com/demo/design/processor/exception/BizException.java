@@ -1,7 +1,5 @@
 package com.demo.design.processor.exception;
 
-import com.demo.design.processor.enums.ResultEnum;
-
 /**
  * 运行时异常类
  *
@@ -9,36 +7,45 @@ import com.demo.design.processor.enums.ResultEnum;
  */
 public class BizException extends RuntimeException {
 
-    private ResultEnum resultEnum;
+    private int code;
 
-    public BizException(ResultEnum resultEnum) {
-        super(resultEnum.getMsg());
-        this.resultEnum = resultEnum;
+    private String msg;
+
+    public BizException(String msg) {
+        super(msg);
+        this.msg = msg;
     }
 
-    public BizException(ResultEnum resultEnum, Throwable throwable) {
-        super(resultEnum.getMsg(), throwable);
-        this.resultEnum = resultEnum;
+    public BizException(int code, String msg) {
+        super(msg);
+        this.code = code;
+        this.msg = msg;
     }
 
-    public static BizException newInstance(ResultEnum resultEnum) {
-        return new BizException(resultEnum);
+    public BizException(String msg, Throwable cause) {
+        super(msg, cause);
+        this.msg = msg;
     }
 
-    public static BizException newInstance(ResultEnum resultEnum, Throwable throwable) {
-        return new BizException(resultEnum, throwable);
+    public BizException(int code, String msg, Throwable cause) {
+        super(msg, cause);
+        this.code = code;
+        this.msg = msg;
     }
 
-    @Override
-    public String toString() {
-        return "BizException{code=" + resultEnum.getCode() + ", msg=" + resultEnum.getMsg() + "}";
+    public int getCode() {
+        return code;
     }
 
-    public ResultEnum getResultEnum() {
-        return resultEnum;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public void setResultEnum(ResultEnum resultEnum) {
-        this.resultEnum = resultEnum;
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

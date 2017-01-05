@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="warn" monitorInterval="60000" packages="com.dianping">
+    <Properties>
+        <!--日志输出格式-->
+        <Property name="pattern">%d{HH:mm:ss.SSS} %-5p [%c] %msg%xEx%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="consoleAppender" target="SYSTEM_OUT">
+            <!-- 需要记录的级别 -->
+            <PatternLayout pattern="${pattern}"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <!-- 自定义logger级别 -->
+        <Logger name="java.sql" level=“debug”>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="consoleAppender"/>
+        </Root>
+    </Loggers>
+
+</configuration>
