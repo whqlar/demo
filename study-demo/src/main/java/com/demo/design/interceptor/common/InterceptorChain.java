@@ -17,4 +17,8 @@ public class InterceptorChain<T extends BaseReq> implements Interceptor<T> {
             interceptor.intercept(request);
         }
     }
+
+    public void setInterceptors(List<Interceptor> interceptors) {
+        this.interceptors = interceptors;
+    }
 }
