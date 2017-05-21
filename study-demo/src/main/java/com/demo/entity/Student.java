@@ -1,12 +1,17 @@
 package com.demo.entity;
 
+import com.google.common.collect.Lists;
 import org.springframework.beans.BeanUtils;
+
+import java.util.List;
 
 /**
  * Created by wu on 16/8/18.
  */
 public class Student extends Person {
     private String school;
+
+    private List<String> books;
 
     public Student() {
     }
@@ -17,7 +22,9 @@ public class Student extends Person {
     }
 
     public static Student getDefaultStudent() {
-        return new Student(Person.getDefaultPerson(), "SMU");
+        Student student = new Student(Person.getDefaultPerson(), "SMU");
+        student.setBooks(Lists.newArrayList("yuwen,shuxue"));
+        return student;
     }
 
 
@@ -33,5 +40,13 @@ public class Student extends Person {
 
     public void setSchool(String school) {
         this.school = school;
+    }
+
+    public List<String> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<String> books) {
+        this.books = books;
     }
 }

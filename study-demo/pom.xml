@@ -41,6 +41,12 @@
             <version>2.6.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty</artifactId>
+            <version>3.9.2.Final</version>
+        </dependency>
+
         <!-- util start -->
         <dependency>
             <groupId>joda-time</groupId>
@@ -95,6 +101,12 @@
             <artifactId>lombok</artifactId>
             <version>1.16.6</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
         </dependency>
         <!-- util end -->
 

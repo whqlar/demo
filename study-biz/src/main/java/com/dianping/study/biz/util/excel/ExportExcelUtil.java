@@ -1,6 +1,5 @@
 package com.dianping.study.biz.util.excel;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -12,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -28,7 +26,7 @@ public class ExportExcelUtil {
      * @return
      * @throws Exception
      */
-    public static InputStream createExcelInputStream(List<Integer> records) {
+    public static <T> InputStream createExcelInputStream(List<T> records) {
         Workbook wb = new XSSFWorkbook();
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -45,16 +43,20 @@ public class ExportExcelUtil {
 
     }
 
-    private static void createWorkBook(Workbook wb, List<Integer> records) {
+    private static <T> void createWorkBook(Workbook wb, List<T> records) {
         Sheet sheet = wb.createSheet("sheet1");
         createHeader(sheet);
 
         Row row;
-        Integer record;
+        T record;
         for (int i = 0; i < records.size(); i++) {
             record = records.get(i);
             row = sheet.createRow(i + 1);
-            row.createCell(0).setCellValue(record);
+            if (record instanceof String) {
+                row.createCell(0).setCellValue((String)record);
+            } else if (record instanceof Double) {
+                row.createCell(0).setCellValue((Double)record);
+            }
         }
     }
 
@@ -67,7 +69,7 @@ public class ExportExcelUtil {
 
     private static enum  ExcelHeader {
 
-        AGE("年龄"),
+        code("code"),
 
         ;
 
