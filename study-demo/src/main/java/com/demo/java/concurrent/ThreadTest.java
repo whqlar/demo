@@ -1,4 +1,4 @@
-package com.demo.util.concurrent;
+package com.demo.java.concurrent;
 
 import java.util.ArrayList;
 import java.util.List;

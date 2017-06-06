@@ -1,4 +1,4 @@
-package com.demo.util.io;
+package com.demo.java.io;
 
 import com.demo.AbstractDemoTestBase;
 import org.junit.Test;

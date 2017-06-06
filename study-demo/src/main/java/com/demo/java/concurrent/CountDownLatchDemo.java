@@ -4,7 +4,7 @@
  * @author haiqian.wu
  * @date Jun 24, 2015 1:33:38 PM
  */
-package com.demo.util.concurrent;
+package com.demo.java.concurrent;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
