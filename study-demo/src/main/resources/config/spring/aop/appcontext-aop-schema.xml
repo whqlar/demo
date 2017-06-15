@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--<aop:aspectj-autoproxy/>-->
+
+    <aop:config>
+        <aop:aspect id="operateLogAspect" ref="operateLogAspectBean">
+            <aop:pointcut id="operateLogBefore" expression="execution(* com.demo.arch.spring.aop..UserService.*(..))" />
+            <aop:before method="logBefore" pointcut-ref="operateLogBefore" />
+
+            <aop:pointcut id="operateLogAfter" expression="execution(* com.demo..*Service.*(..))" />
+            <aop:after method="logAfter" pointcut-ref="operateLogAfter" />
+        </aop:aspect>
+    </aop:config>
+
+    <bean id="operateLogAspectBean" class="com.demo.arch.spring.aop.AopAnnotationTest.LogAspect" />
+
+    <bean id="userService" class="com.demo.arch.spring.aop.UserServiceImpl" />
+</beans>

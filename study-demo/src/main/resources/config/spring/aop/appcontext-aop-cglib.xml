@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="userService" class="com.demo.arch.spring.aop.UserServiceImpl" />
+
+    <bean id="methodBefore" class="com.demo.arch.spring.aop.AopCglibTest.MethodBefore" />
+
+    <bean id="methodAfterReturning" class="com.demo.arch.spring.aop.AopCglibTest.MethodAfterReturning" />
+
+    <bean id="methodAfterThrowing" class="com.demo.arch.spring.aop.AopCglibTest.MethodAfterThrowing" />
+
+    <bean id="methodAround" class="com.demo.arch.spring.aop.AopCglibTest.MethodAround" />
+
+    <bean id="userServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="userService" />
+        <property name="interceptorNames">
+            <list>
+                <value>methodBefore</value>
+                <value>methodAfterReturning</value>
+                <value>methodAfterThrowing</value>
+                <value>methodAround</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- 自定义方法拦截 -->
+    <bean id="userNamePointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+        <property name="mappedName" value="getUserName" />
+    </bean>
+
+    <bean id="userNameAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="userNamePointcut" />
+        <property name="advice" ref="methodBefore" />
+    </bean>
+
+    <bean id="userServiceAdvisorProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="userService" />
+        <property name="interceptorNames">
+            <list>
+                <value>userNameAdvisor</value>
+            </list>
+        </property>
+    </bean>
+</beans>
