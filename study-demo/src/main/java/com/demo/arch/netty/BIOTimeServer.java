@@ -14,6 +14,7 @@ public class BIOTimeServer {
 
         try {
             serverSocket = new ServerSocket(8080);
+            serverSocket.setSoTimeout(1000);
             while (true) {
                 Socket socket = serverSocket.accept();
                 new Thread(new SocketHandler(socket)).start();

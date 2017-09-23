@@ -14,8 +14,11 @@
 
     <Loggers>
         <!-- 自定义logger级别 -->
-        <Logger name="java.sql" level=“debug”>
-        </Logger>
+        <Logger name="java.sql" level="debug" />
+
+        <Logger name="org.mybatis" level="debug" />
+
+        <Logger name="org.springframework" level="debug" />
 
         <Root level="info">
             <AppenderRef ref="consoleAppender"/>

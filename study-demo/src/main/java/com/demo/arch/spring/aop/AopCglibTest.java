@@ -41,7 +41,6 @@ public class AopCglibTest {
         System.out.println(userService.getUserName(1234));
     }
 
-
     private static class MethodBefore implements MethodBeforeAdvice {
 
         @Override

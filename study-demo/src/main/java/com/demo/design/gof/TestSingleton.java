@@ -1,51 +1,110 @@
 package com.demo.design.gof;
 
+import org.junit.Test;
+
 /**
- * ����ģʽ��Singleton��
- * ����ȫ�ֱ���������ռ�ĳ�ͻ������˵��һ�ָ����˵�ȫ�ֱ���������һ����ֻ��һ��ʵ�����ṩһ������ȫ�ֵ�ķ�ʽ��������ı�֤��ʵ��Ĵ����ͷ���Լ��
- * ��ϵͳ��ֻ��һ��ʵ����˹��췽��Ӧ��Ϊ˽�� ����ʽ�������ʱֱ�Ӵ�����̬ʵ�� ����ʽ����һ����Ҫʱ�Ŵ���һ��ʵ����ônewInstance����Ҫ��ͬ��
- * ����ʽ������ʽҪ�ã�������Դ������Ҫ����ǲ���ͬ����
- * 
+ * 这里静态
  * @author Administrator
- * 
  */
 public class TestSingleton {
 
-	public static void main(String[] args) {
+	@Test
+	public void testSingletonA() throws Exception {
+		SingletonA1 singletonA1 = SingletonA1.INSTANCE;
+		SingletonA2 singletonA2 = SingletonA2.getInstance();
+	}
 
+	@Test
+	public void testSingletonB() throws Exception {
+		SingletonB1 singletonB1 = SingletonB1.getInstance();
+		SingletonB2 singletonB2 = SingletonB2.getInstance();
+	}
+
+	@Test
+	public void testSingletonC() throws Exception {
+		SingletonC singletonC = SingletonC.getInstance();
+	}
+
+	@Test
+	public void testSingletonD() throws Exception {
+		SingletonD singletonD = SingletonD.INSTANCE;
 	}
 
 }
 
-class ClassA { // ����ʽ
+class SingletonA1 {
 
-	private static ClassA i = new ClassA();
+	public final static SingletonA1 INSTANCE = new SingletonA1();
 
-	public static ClassA newInstance() {
-
-		return i;
+	private SingletonA1() {
 
 	}
-
-	private ClassA() {
-	}
-
 }
 
-class ClassB { // ����ʽ
+class SingletonA2 {
 
-	private static ClassB i = null;
+	private final static SingletonA2 INSTANCE = new SingletonA2();
 
-	public static synchronized ClassB newInstance() {
+	private SingletonA2() {
 
-		if (i == null)
-			i = new ClassB();
+	}
+	public static SingletonA2 getInstance() {
+		return INSTANCE;
+	}
+}
 
-		return i;
+class SingletonB1 {
+
+	private static SingletonB1 instance = null;
+
+	private SingletonB1() {
 
 	}
 
-	private ClassB() {
+	public static SingletonB1 getInstance() {
+		if (instance == null) {
+			synchronized(instance) {
+				if (instance == null) {
+					instance = new SingletonB1();
+				}
+			}
+		}
+		return instance;
+	}
+}
+
+class SingletonB2 {
+
+	private static SingletonB2 instance = null;
+
+	private SingletonB2() {}
+
+	public synchronized static SingletonB2 getInstance() {
+		if (instance == null) {
+			instance = new SingletonB2();
+		}
+		return instance;
+	}
+}
+
+class SingletonC {
+
+	private SingletonC() {}
+
+	private static class SingletonCHolder {
+		private static final SingletonC INSTANCE = new SingletonC();
 	}
 
+	public static SingletonC getInstance() {
+		return SingletonCHolder.INSTANCE;
+	}
+}
+
+enum SingletonD {
+
+	INSTANCE;
+
+	public void doSomeThring() {
+
+	}
 }

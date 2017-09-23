@@ -1,5 +1,6 @@
 package com.demo.arch.spring.aop;
 
+import com.demo.entity.Person;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -30,6 +31,11 @@ public class AopAnnotationTest {
         System.out.println(userService.getUserAddress(1234));
     }
 
+    @Test
+    public void test3() throws Exception {
+        System.out.println(userService.addUser(Person.getDefaultPerson()));
+    }
+
     @Aspect
     private static class LogAspect {
 
@@ -38,8 +44,10 @@ public class AopAnnotationTest {
             System.out.println("logBefore start");
         }
 
-        @After("execution(* com.demo.arch..*Service.*(..))")
+        @After("execution(* com.demo.arch..*Service.*(..)) || execution(* com.demo..*.(..))")
         public void logAfter(JoinPoint joinPoint) {
+            Object field = joinPoint.getArgs()[0];
+
             System.out.println("logAfter start");
         }
 
@@ -47,7 +55,7 @@ public class AopAnnotationTest {
          * ProceedingJoinPoint is only supported for around advice
          * @param joinPoint
          */
-        @Around("execution(* com.demo.arch.spring.aop.UserService.*(..))")
+//        @Around("execution(* com.demo.arch.spring.aop.UserService.*(..))")
         public void logAround(ProceedingJoinPoint joinPoint) throws Throwable {
             System.out.println("logAround start");
             try {
@@ -58,9 +66,10 @@ public class AopAnnotationTest {
             System.out.println("logAround end");
         }
 
-        @AfterReturning("execution(* com.demo.arch.spring.aop.UserService.*(..))")
-        public void logAfterReturning(JoinPoint joinPoint) {
-            System.out.println("logAfterReturning start");
+        @AfterReturning(value = "execution(* com.demo.arch.spring.aop.UserService.*(..))", returning = "retVal")
+        public void logAfterReturning(JoinPoint joinPoint, Object retVal) {
+            System.out.println(joinPoint.getArgs()[0]);
+            System.out.println("logAfterReturning start, retVal = " + retVal);
         }
 
         @AfterThrowing("execution(* com.demo.arch.spring.aop.UserService.*(..))")

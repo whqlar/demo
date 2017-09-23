@@ -1,6 +1,7 @@
 package com.dianping.study.biz.util;
 
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,6 +48,13 @@ public class DateUtil {
 
     public static Date parseDate(String date) {
         return parseDate(date, DEFAULT_FORMAT);
+    }
+
+    private static String loadNextMonday() {
+        DateTime now = new DateTime();
+        int dayOfWeek = now.getDayOfWeek();
+        DateTime nextMonday = now.plusDays(7 - dayOfWeek + 1);
+        return nextMonday.toString("yyyy-MM-dd");
     }
 
     /**
